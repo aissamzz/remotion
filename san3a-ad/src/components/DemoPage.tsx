@@ -1,30 +1,43 @@
 import {theme} from '../theme';
 import {fontFamily} from '../fonts';
 
-// Recreation of the San3a public artisan page (the part the phone scrolls through).
-// Built at a fixed 430px width so scroll offsets are deterministic. When the real
-// full-page screenshot arrives, swap this whole component for an <Img>.
+// Faithful recreation of the real public page https://san3apages.com/it9an-demo
+// (ورشة الإتقان — نجار, قسنطينة). Built at a fixed 430px width so scroll offsets
+// are deterministic. Swap for an <Img> of the real screenshot if you prefer.
 export const PAGE_WIDTH = 430;
-export const PAGE_HEIGHT = 1980;
+export const PAGE_HEIGHT = 1860;
 
-// Scroll targets (translateY) that frame each section in a ~760px viewport.
+// Scroll targets (translateY) that frame each real section in a ~760px viewport.
 export const SECTION_Y = {
-	profile: 110,
+	profile: 120,
 	services: 560,
-	gallery: 980,
-	appointment: 1220,
+	gallery: 940,
+	appointment: 1100,
 } as const;
 
-const Line: React.FC<{w: number | string; c?: string}> = ({w, c}) => (
+const Btn: React.FC<{
+	children: React.ReactNode;
+	bg: string;
+	color: string;
+	outline?: boolean;
+}> = ({children, bg, color, outline}) => (
 	<div
 		style={{
-			width: w,
-			height: 14,
-			borderRadius: 7,
-			background: c ?? theme.border,
-			margin: '12px auto',
+			background: outline ? theme.card : bg,
+			color,
+			border: outline ? `1.5px solid ${theme.border}` : 'none',
+			borderRadius: 14,
+			padding: '13px 18px',
+			fontSize: 21,
+			fontWeight: 800,
+			display: 'flex',
+			alignItems: 'center',
+			gap: 8,
+			whiteSpace: 'nowrap',
 		}}
-	/>
+	>
+		{children}
+	</div>
 );
 
 const Heading: React.FC<{children: React.ReactNode}> = ({children}) => (
@@ -34,13 +47,29 @@ const Heading: React.FC<{children: React.ReactNode}> = ({children}) => (
 			fontWeight: 800,
 			color: theme.ink,
 			textAlign: 'right',
-			padding: '0 22px',
-			marginBottom: 16,
+			marginBottom: 18,
 		}}
 	>
 		{children}
 	</div>
 );
+
+const services: [string, string][] = [
+	['مطبخ خشب على المقاس', 'من 120.000 دج'],
+	['خزانة ملابس مدمجة', 'من 65.000 دج'],
+	['باب خشب داخلي', 'من 22.000 دج'],
+	['مكتبة أو رفوف حائط', 'من 18.000 دج'],
+];
+
+const gallery = ['🍽️', '🗄️', '🪵', '🛋️'];
+
+const days: [string, string][] = [
+	['السبت', '20'],
+	['الأحد', '21'],
+	['الإثنين', '22'],
+	['الثلاثاء', '23'],
+	['الأربعاء', '24'],
+];
 
 export const DemoPage: React.FC = () => {
 	return (
@@ -53,135 +82,172 @@ export const DemoPage: React.FC = () => {
 				direction: 'rtl',
 			}}
 		>
-			{/* Cover */}
+			{/* Cover photo */}
 			<div
 				style={{
-					height: 230,
-					background: `linear-gradient(125deg, ${theme.terracotta}, ${theme.terracottaDeep})`,
+					height: 220,
+					background: `linear-gradient(120deg, #d8c3a5, #b79169 55%, #8a6a45)`,
 					position: 'relative',
 				}}
 			>
 				<div
 					style={{
 						position: 'absolute',
-						inset: 0,
-						backgroundImage: `radial-gradient(#ffffff22 2px, transparent 2px)`,
-						backgroundSize: '26px 26px',
-					}}
-				/>
-				<div
-					style={{
-						position: 'absolute',
-						top: 18,
-						right: 20,
-						color: theme.white,
-						fontWeight: 900,
-						fontSize: 26,
-						opacity: 0.9,
+						bottom: 26,
+						left: '50%',
+						transform: 'translateX(-50%)',
+						fontSize: 70,
+						opacity: 0.85,
 					}}
 				>
-					صنعة
+					🪑
 				</div>
 			</div>
 
-			{/* Avatar */}
+			{/* Logo card */}
 			<div
 				style={{
-					width: 132,
-					height: 132,
-					borderRadius: '50%',
-					background: theme.amber,
-					border: `7px solid ${theme.cream}`,
-					margin: '-66px auto 0',
+					width: 104,
+					height: 104,
+					borderRadius: 26,
+					background: theme.white,
+					border: `4px solid ${theme.cream}`,
+					margin: '-52px auto 0',
 					display: 'flex',
 					alignItems: 'center',
 					justifyContent: 'center',
-					fontSize: 64,
+					fontSize: 52,
+					boxShadow: '0 10px 24px rgba(58,46,37,0.18)',
 				}}
 			>
 				🪚
 			</div>
 
-			{/* Name + meta */}
-			<div style={{textAlign: 'center', marginTop: 10}}>
-				<div style={{fontSize: 34, fontWeight: 900, color: theme.ink}}>
-					كريم للنجارة
+			{/* Name + tag */}
+			<div style={{textAlign: 'center', marginTop: 12}}>
+				<div style={{fontSize: 36, fontWeight: 900, color: theme.ink}}>
+					ورشة الإتقان
 				</div>
-				<div style={{fontSize: 22, color: theme.muted, marginTop: 4}}>
-					نجارة وأثاث على الطلب · الجزائر العاصمة
+				<div
+					style={{
+						display: 'inline-flex',
+						gap: 8,
+						alignItems: 'center',
+						marginTop: 10,
+						fontSize: 20,
+						color: theme.muted,
+					}}
+				>
+					<span
+						style={{
+							background: theme.amber,
+							color: theme.terracottaDeep,
+							fontWeight: 800,
+							padding: '4px 14px',
+							borderRadius: 999,
+						}}
+					>
+						نجار
+					</span>
+					<span>📍 قسنطينة</span>
 				</div>
-				<div style={{fontSize: 22, marginTop: 8}}>⭐️⭐️⭐️⭐️⭐️</div>
 			</div>
 
 			{/* Description */}
-			<div style={{padding: '18px 28px'}}>
-				<Line w="86%" />
-				<Line w="100%" />
-				<Line w="70%" />
+			<div
+				style={{
+					padding: '16px 30px 0',
+					textAlign: 'center',
+					fontSize: 21,
+					lineHeight: 1.6,
+					color: theme.ink,
+					opacity: 0.85,
+				}}
+			>
+				نجارة عصرية وكلاسيكية على المقاس: مطابخ، خزائن، أبواب وديكورات خشبية.
+				خبرة تتجاوز خمسة عشر عاماً في خدمة عائلات قسنطينة.
 			</div>
 
-			{/* Services */}
-			<div style={{paddingTop: 18}}>
-				<Heading>الخدمات</Heading>
-				{[
-					['تفصيل خزانة', 'من 15000 دج'],
-					['باب خشبي', 'من 9000 دج'],
-					['طاولة طعام', 'من 22000 دج'],
-				].map(([name, price]) => (
-					<div
-						key={name}
-						style={{
-							margin: '0 22px 12px',
-							background: theme.card,
-							border: `1px solid ${theme.border}`,
-							borderRadius: 16,
-							padding: '16px 18px',
-							display: 'flex',
-							justifyContent: 'space-between',
-							alignItems: 'center',
-						}}
-					>
-						<span style={{fontSize: 24, fontWeight: 700, color: theme.ink}}>
-							{name}
-						</span>
-						<span
+			{/* Action buttons */}
+			<div
+				style={{
+					display: 'flex',
+					gap: 10,
+					justifyContent: 'center',
+					padding: '20px 24px 0',
+				}}
+			>
+				<Btn bg={theme.terracotta} color={theme.white}>
+					📅 احجز موعد
+				</Btn>
+				<Btn bg={theme.whatsapp} color={theme.white}>
+					واتساب
+				</Btn>
+				<Btn bg={theme.card} color={theme.ink} outline>
+					📞 اتصل الآن
+				</Btn>
+			</div>
+
+			{/* Services & prices */}
+			<div style={{padding: '34px 22px 0'}}>
+				<div
+					style={{
+						background: theme.card,
+						border: `1px solid ${theme.border}`,
+						borderRadius: 22,
+						padding: 22,
+					}}
+				>
+					<Heading>الخدمات والأسعار</Heading>
+					{services.map(([name, price]) => (
+						<div
+							key={name}
 							style={{
-								fontSize: 20,
-								fontWeight: 700,
-								color: theme.terracotta,
-								background: theme.amber,
-								padding: '6px 14px',
-								borderRadius: 999,
+								display: 'flex',
+								justifyContent: 'space-between',
+								alignItems: 'center',
+								padding: '14px 0',
+								borderBottom: `1px solid ${theme.border}`,
 							}}
 						>
-							{price}
-						</span>
-					</div>
-				))}
+							<span style={{fontSize: 23, fontWeight: 700, color: theme.ink}}>
+								{name}
+							</span>
+							<span
+								style={{
+									fontSize: 19,
+									fontWeight: 800,
+									color: theme.terracotta,
+								}}
+							>
+								{price}
+							</span>
+						</div>
+					))}
+				</div>
 			</div>
 
 			{/* Gallery */}
-			<div style={{paddingTop: 26}}>
+			<div style={{padding: '30px 22px 0'}}>
 				<Heading>معرض الأعمال</Heading>
 				<div
 					style={{
 						display: 'grid',
-						gridTemplateColumns: '1fr 1fr 1fr',
-						gap: 10,
-						padding: '0 22px',
+						gridTemplateColumns: '1fr 1fr',
+						gap: 12,
 					}}
 				>
-					{['🪑', '🚪', '🛏️', '🪟', '🗄️', '🪜'].map((e) => (
+					{gallery.map((e, idx) => (
 						<div
 							key={e}
 							style={{
-								aspectRatio: '1',
-								borderRadius: 14,
-								background: theme.sand,
+								aspectRatio: '1.3',
+								borderRadius: 16,
+								background: `linear-gradient(135deg, ${idx % 2 ? '#cdb491' : '#d8c3a5'}, #a9855c)`,
 								display: 'flex',
 								alignItems: 'center',
 								justifyContent: 'center',
-								fontSize: 44,
+								fontSize: 50,
 							}}
 						>
 							{e}
@@ -191,48 +257,74 @@ export const DemoPage: React.FC = () => {
 			</div>
 
 			{/* Appointment */}
-			<div style={{paddingTop: 30}}>
-				<Heading>احجز موعد</Heading>
-				<div style={{padding: '0 22px'}}>
+			<div style={{padding: '30px 22px 0'}}>
+				<div
+					style={{
+						background: theme.card,
+						border: `1px solid ${theme.border}`,
+						borderRadius: 22,
+						padding: 22,
+					}}
+				>
+					<Heading>📅 احجز موعدك</Heading>
+					<div
+						style={{
+							fontSize: 19,
+							color: theme.muted,
+							marginBottom: 12,
+							textAlign: 'right',
+						}}
+					>
+						اختر اليوم
+					</div>
+					<div style={{display: 'flex', gap: 7, justifyContent: 'space-between'}}>
+						{days.map(([d, n]) => (
+							<div
+								key={n}
+								style={{
+									flex: 1,
+									background: theme.cream,
+									border: `1px solid ${theme.border}`,
+									borderRadius: 12,
+									padding: '12px 0',
+									textAlign: 'center',
+								}}
+							>
+								<div style={{fontSize: 15, color: theme.muted}}>{d}</div>
+								<div style={{fontSize: 26, fontWeight: 900, color: theme.ink}}>
+									{n}
+								</div>
+								<div style={{fontSize: 13, color: theme.muted}}>جوان</div>
+							</div>
+						))}
+					</div>
 					<div
 						style={{
 							background: theme.whatsapp,
 							color: theme.white,
-							borderRadius: 16,
-							padding: '18px 0',
-							fontSize: 26,
+							borderRadius: 14,
+							padding: '16px 0',
+							fontSize: 24,
 							fontWeight: 800,
 							textAlign: 'center',
+							marginTop: 16,
 						}}
 					>
 						احجز عبر واتساب
 					</div>
-					<div
-						style={{
-							display: 'flex',
-							gap: 10,
-							marginTop: 14,
-							justifyContent: 'center',
-						}}
-					>
-						{['اليوم', 'غدا 10:00', 'غدا 14:00'].map((t) => (
-							<span
-								key={t}
-								style={{
-									fontSize: 20,
-									fontWeight: 700,
-									color: theme.ink,
-									background: theme.card,
-									border: `1px solid ${theme.border}`,
-									padding: '12px 16px',
-									borderRadius: 12,
-								}}
-							>
-								{t}
-							</span>
-						))}
-					</div>
 				</div>
+			</div>
+
+			{/* Footer */}
+			<div
+				style={{
+					textAlign: 'center',
+					padding: '26px 0',
+					fontSize: 18,
+					color: theme.muted,
+				}}
+			>
+				صُنع بواسطة <span style={{fontWeight: 800}}>san3apages</span>
 			</div>
 		</div>
 	);

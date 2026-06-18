@@ -4,8 +4,6 @@ import {Scene} from './components/Scene';
 import {Hook} from './scenes/Hook';
 import {Brand} from './scenes/Brand';
 import {ScrollShowcase, SHOWCASE_DURATION} from './scenes/ScrollShowcase';
-import {FeatureInvoice} from './scenes/FeatureInvoice';
-import {FeatureQr} from './scenes/FeatureQr';
 import {Pricing} from './scenes/Pricing';
 import {Cta} from './scenes/Cta';
 
@@ -13,11 +11,9 @@ const OVERLAP = 8;
 
 // `fill` scenes are full-bleed (no centered padding) — used for the showcase.
 const scenes: {Comp: React.FC; d: number; fill?: boolean}[] = [
-	{Comp: Hook, d: 95},
-	{Comp: Brand, d: 100},
+	{Comp: Hook, d: 85},
+	{Comp: Brand, d: 90},
 	{Comp: ScrollShowcase, d: SHOWCASE_DURATION + 16, fill: true},
-	{Comp: FeatureInvoice, d: 100},
-	{Comp: FeatureQr, d: 100},
 	{Comp: Pricing, d: 115},
 	{Comp: Cta, d: 125},
 ];

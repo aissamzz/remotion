@@ -10,34 +10,30 @@ font and the site's own "Nature Distilled" terracotta‑and‑cream palette.
 
 ![poster](out/poster.png)
 
-## What's in it (≈30s, 1080×1080 square, 30fps)
+## What's in it (≈24s, 1080×1080 square, 30fps)
 
 | # | Scene | Message |
 |---|-------|---------|
 | 1 | Hook | عندك صنعة؟ أعطيها حضور رقمي في دقائق |
 | 2 | Brand | صنعة · San3a Pages — صفحتك الاحترافية برابط واحد |
-| 3 | **Scroll showcase** | Phone scrolls the public page on the left while the headline on the right swaps per section: **الملف** (profile/photo/description) → **الخدمات** (services + prices) → **المعرض** (gallery) → **الموعد** (WhatsApp booking) |
-| 4 | Dashboard | فواتير PDF احترافية (في لوحة التحكم) |
-| 5 | Dashboard | رمز QR لمشاركة سهلة (في لوحة التحكم) |
-| 6 | Pricing | 4500 دج في السنة — مفتاح تفعيل تشريه كاش |
-| 7 | CTA | ابدأ اليوم — san3apages.com |
+| 3 | **Scroll showcase** | Phone scrolls the real demo page on the left while the headline on the right swaps per section: **الملف** (profile/photo/description/buttons) → **الخدمات** (services + prices) → **المعرض** (gallery) → **الموعد** (date picker + WhatsApp booking) |
+| 4 | Pricing | 4500 دج في السنة — مفتاح تفعيل تشريه كاش |
+| 5 | CTA | ابدأ اليوم — san3apages.com |
 
-### Swapping in the real demo page
+### The scrolling page
 
-The scrolling phone currently shows a faithful **recreation** of the public page
-(`src/components/DemoPage.tsx`). To use the real site, capture a single
-full-page screenshot at **430px mobile width** (Chrome DevTools → device
-toolbar → "Capture full size screenshot"), drop it in `public/`, and replace
-`<DemoPage />` in `src/scenes/ScrollShowcase.tsx` with:
+The phone scrolls a recreation of the real public page
+[`san3apages.com/it9an-demo`](https://san3apages.com/it9an-demo) — *ورشة الإتقان*
+(نجار, قسنطينة) — in `src/components/DemoPage.tsx`, with the actual name,
+description, services & prices, gallery, and appointment date picker. Only what
+exists on the public page is shown (no invented sections).
 
-```tsx
-<Img src={staticFile('demo-page.png')} style={{width: PAGE_WIDTH}} />
-```
-
-Then tune the four scroll stops in `SECTION_Y` (in `DemoPage.tsx`) to the pixel
-offsets of each section in your screenshot. Note: QR + PDF invoicing live in the
-artisan **dashboard**, so they're shown as separate beats rather than in the
-public-page scroll.
+To use the live site verbatim instead, capture a single full-page screenshot at
+**430px mobile width** (Chrome DevTools → device toolbar → "Capture full size
+screenshot"), drop it in `public/`, replace `<DemoPage />` in
+`src/scenes/ScrollShowcase.tsx` with
+`<Img src={staticFile('demo-page.png')} style={{width: PAGE_WIDTH}} />`, and tune
+the four scroll stops in `SECTION_Y` to the section offsets in your screenshot.
 
 ## Run it
 

@@ -17,10 +17,10 @@ const SEC_LEN = 78; // frames per section
 export const SHOWCASE_DURATION = SEC_LEN * 4;
 
 const sections = [
-	{y: SECTION_Y.profile, label: 'الملف', title: 'صفحة احترافية\nبكل تفاصيلك', sub: 'صورة، وصف، وتقييمات الزبائن'},
-	{y: SECTION_Y.services, label: 'الخدمات', title: 'اعرض خدماتك\nوأسعارك', sub: 'كل خدمة بسعرها بوضوح'},
-	{y: SECTION_Y.gallery, label: 'المعرض', title: 'معرض أعمالك\nيتكلّم عليك', sub: 'صور مشاريعك السابقة'},
-	{y: SECTION_Y.appointment, label: 'الموعد', title: 'حجز المواعيد\nعبر واتساب', sub: 'زبونك يحجز مباشرة'},
+	{y: SECTION_Y.profile, label: 'الملف', title: 'صفحة احترافية\nبكل تفاصيلك', sub: 'صورة، وصف، وأزرار تواصل مباشرة'},
+	{y: SECTION_Y.services, label: 'الخدمات', title: 'خدماتك وأسعارك\nواضحة للزبون', sub: 'كل خدمة بسعرها'},
+	{y: SECTION_Y.gallery, label: 'المعرض', title: 'معرض أعمالك\nيتكلّم عليك', sub: 'صور مشاريعك الحقيقية'},
+	{y: SECTION_Y.appointment, label: 'الموعد', title: 'حجز المواعيد\nعبر واتساب', sub: 'الزبون يختار اليوم ويحجز'},
 ];
 
 const Dots: React.FC<{active: number}> = ({active}) => (
