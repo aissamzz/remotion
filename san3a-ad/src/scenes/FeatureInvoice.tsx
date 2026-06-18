@@ -4,7 +4,7 @@ import {FeatureLayout} from '../components/FeatureLayout';
 export const FeatureInvoice: React.FC = () => {
 	return (
 		<FeatureLayout
-			step="③ الفوترة"
+			step="في لوحة التحكم"
 			visual={<IconBadge size={230}>🧾</IconBadge>}
 			title={
 				<>

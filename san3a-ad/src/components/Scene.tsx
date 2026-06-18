@@ -5,7 +5,8 @@ import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 export const Scene: React.FC<{
 	durationInFrames: number;
 	children: React.ReactNode;
-}> = ({durationInFrames, children}) => {
+	fill?: boolean;
+}> = ({durationInFrames, children, fill}) => {
 	const frame = useCurrentFrame();
 	const fade = 12;
 
@@ -20,10 +21,14 @@ export const Scene: React.FC<{
 		<AbsoluteFill
 			style={{
 				opacity,
-				justifyContent: 'center',
-				alignItems: 'center',
-				direction: 'rtl',
-				padding: 90,
+				...(fill
+					? {}
+					: {
+							justifyContent: 'center',
+							alignItems: 'center',
+							direction: 'rtl',
+							padding: 90,
+						}),
 			}}
 		>
 			{children}

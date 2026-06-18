@@ -4,8 +4,8 @@ import {FeatureLayout} from '../components/FeatureLayout';
 export const FeatureQr: React.FC = () => {
 	return (
 		<FeatureLayout
-			step="④ المشاركة"
-			visual={<QrCode size={300} />}
+			step="في لوحة التحكم"
+			visual={<QrCode size={290} />}
 			title={
 				<>
 					رمز QR

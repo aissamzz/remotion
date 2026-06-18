@@ -5,14 +5,14 @@ import {FPS} from './theme';
 export const RemotionRoot: React.FC = () => {
 	return (
 		<>
-			{/* Vertical 9:16 — built for Instagram/TikTok Reels & WhatsApp Status */}
+			{/* Square 1:1 — feed posts (Instagram/Facebook), side-by-side phone + text */}
 			<Composition
 				id="SanaAd"
 				component={SanaAd}
 				durationInFrames={TOTAL_DURATION}
 				fps={FPS}
 				width={1080}
-				height={1920}
+				height={1080}
 			/>
 		</>
 	);

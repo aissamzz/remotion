@@ -21,7 +21,20 @@ export const FeatureLayout: React.FC<{
 			}}
 		>
 			<Rise delay={4} distance={40}>
-				{visual}
+				<div style={{position: 'relative', display: 'grid', placeItems: 'center'}}>
+					{/* soft glow behind the visual for extra pop */}
+					<div
+						style={{
+							position: 'absolute',
+							width: 460,
+							height: 460,
+							borderRadius: '50%',
+							background: `radial-gradient(circle, ${theme.terracotta}26 0%, transparent 68%)`,
+							filter: 'blur(8px)',
+						}}
+					/>
+					<div style={{position: 'relative'}}>{visual}</div>
+				</div>
 			</Rise>
 
 			<div>
