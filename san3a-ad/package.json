@@ -1,0 +1,22 @@
+{
+	"name": "san3a-ad",
+	"version": "1.0.0",
+	"private": true,
+	"description": "Remotion video ad for San3a Pages (صنعة) — portfolio pages for Algerian artisans",
+	"scripts": {
+		"dev": "remotion studio",
+		"render": "remotion render SanaAd out/san3a-ad.mp4",
+		"upgrade": "remotion upgrade"
+	},
+	"dependencies": {
+		"@remotion/cli": "4.0.481",
+		"@remotion/google-fonts": "4.0.481",
+		"react": "19.0.0",
+		"react-dom": "19.0.0",
+		"remotion": "4.0.481"
+	},
+	"devDependencies": {
+		"@types/react": "19.0.0",
+		"typescript": "5.8.3"
+	}
+}
