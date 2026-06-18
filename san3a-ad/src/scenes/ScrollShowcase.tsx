@@ -7,13 +7,12 @@ import {
 	useVideoConfig,
 } from 'remotion';
 import {PhoneFrame} from '../components/PhoneFrame';
-import {DemoPage, PAGE_WIDTH, SECTION_Y} from '../components/DemoPage';
+import {DemoPage, PAGE_WIDTH, SECTION_Y, VIEWPORT_H} from '../components/DemoPage';
 import {Rise} from '../components/Rise';
 import {theme} from '../theme';
 import {fontFamily} from '../fonts';
 
-const VIEWPORT_H = 760;
-const SEC_LEN = 78; // frames per section
+const SEC_LEN = 82; // frames per section
 export const SHOWCASE_DURATION = SEC_LEN * 4;
 
 const sections = [

@@ -10,30 +10,26 @@ font and the site's own "Nature Distilled" terracotta‑and‑cream palette.
 
 ![poster](out/poster.png)
 
-## What's in it (≈24s, 1080×1080 square, 30fps)
+## What's in it (≈21s, 1080×1080 square, 30fps)
 
 | # | Scene | Message |
 |---|-------|---------|
 | 1 | Hook | عندك صنعة؟ أعطيها حضور رقمي في دقائق |
-| 2 | Brand | صنعة · San3a Pages — صفحتك الاحترافية برابط واحد |
-| 3 | **Scroll showcase** | Phone scrolls the real demo page on the left while the headline on the right swaps per section: **الملف** (profile/photo/description/buttons) → **الخدمات** (services + prices) → **المعرض** (gallery) → **الموعد** (date picker + WhatsApp booking) |
-| 4 | Pricing | 4500 دج في السنة — مفتاح تفعيل تشريه كاش |
-| 5 | CTA | ابدأ اليوم — san3apages.com |
+| 2 | **Scroll showcase** | Phone scrolls the real page on the left while the headline on the right swaps per section: **الملف** (profile/photo/description/buttons) → **الخدمات** (services + prices) → **المعرض** (gallery) → **الموعد** (date picker + WhatsApp booking) |
+| 3 | Pricing | 4500 دج في السنة — مفتاح تفعيل تشريه كاش |
+| 4 | CTA | ابدأ اليوم — san3apages.com |
 
 ### The scrolling page
 
-The phone scrolls a recreation of the real public page
+The phone scrolls the **actual screenshot** of the live public page
 [`san3apages.com/it9an-demo`](https://san3apages.com/it9an-demo) — *ورشة الإتقان*
-(نجار, قسنطينة) — in `src/components/DemoPage.tsx`, with the actual name,
-description, services & prices, gallery, and appointment date picker. Only what
-exists on the public page is shown (no invented sections).
+(نجار, قسنطينة). The image lives at `public/demo.png` (430×1662, captured at the
+430×932 mobile viewport) and is shown inside an exact **430×932** phone screen,
+loaded via `src/components/DemoPage.tsx`.
 
-To use the live site verbatim instead, capture a single full-page screenshot at
-**430px mobile width** (Chrome DevTools → device toolbar → "Capture full size
-screenshot"), drop it in `public/`, replace `<DemoPage />` in
-`src/scenes/ScrollShowcase.tsx` with
-`<Img src={staticFile('demo-page.png')} style={{width: PAGE_WIDTH}} />`, and tune
-the four scroll stops in `SECTION_Y` to the section offsets in your screenshot.
+To update it, replace `public/demo.png` with a new full-page screenshot at 430px
+width and adjust the four scroll stops in `SECTION_Y` (in `DemoPage.tsx`) and
+`PAGE_HEIGHT` to match the new image height.
 
 ## Run it
 
