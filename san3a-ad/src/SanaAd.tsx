@@ -3,6 +3,8 @@ import {Background} from './components/Background';
 import {Scene} from './components/Scene';
 import {Hook} from './scenes/Hook';
 import {ScrollShowcase, SHOWCASE_DURATION} from './scenes/ScrollShowcase';
+import {FeatureInvoice} from './scenes/FeatureInvoice';
+import {FeatureQr} from './scenes/FeatureQr';
 import {Pricing} from './scenes/Pricing';
 import {Cta} from './scenes/Cta';
 
@@ -12,6 +14,8 @@ const OVERLAP = 8;
 const scenes: {Comp: React.FC; d: number; fill?: boolean}[] = [
 	{Comp: Hook, d: 85},
 	{Comp: ScrollShowcase, d: SHOWCASE_DURATION + 16, fill: true},
+	{Comp: FeatureInvoice, d: 105},
+	{Comp: FeatureQr, d: 105},
 	{Comp: Pricing, d: 115},
 	{Comp: Cta, d: 125},
 ];

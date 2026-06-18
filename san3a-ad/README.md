@@ -10,14 +10,19 @@ font and the site's own "Nature Distilled" terracotta‑and‑cream palette.
 
 ![poster](out/poster.png)
 
-## What's in it (≈21s, 1080×1080 square, 30fps)
+## What's in it (≈28s, 1080×1080 square, 30fps)
 
 | # | Scene | Message |
 |---|-------|---------|
 | 1 | Hook | عندك صنعة؟ أعطيها حضور رقمي في دقائق |
 | 2 | **Scroll showcase** | Phone scrolls the real page on the left while the headline on the right swaps per section: **الملف** (profile/photo/description/buttons) → **الخدمات** (services + prices) → **المعرض** (gallery) → **الموعد** (date picker + WhatsApp booking) |
-| 3 | Pricing | 4500 دج في السنة — مفتاح تفعيل تشريه كاش |
-| 4 | CTA | ابدأ اليوم — san3apages.com |
+| 3 | Invoices | فواتير PDF احترافية — animated PDF invoice mockup (في لوحة التحكم) |
+| 4 | QR code | رمز QR لمشاركة سهلة — a **real, scannable** QR to `san3apages.com/it9an-demo` |
+| 5 | Pricing | 4500 دج في السنة — مفتاح تفعيل تشريه كاش |
+| 6 | CTA | ابدأ اليوم — san3apages.com |
+
+> The QR is generated at render time with `qrcode-generator` (`src/components/QrCode.tsx`)
+> and verified to decode back to the demo URL — not a decorative graphic.
 
 ### The scrolling page
 
