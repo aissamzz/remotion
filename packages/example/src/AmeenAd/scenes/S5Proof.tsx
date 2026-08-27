@@ -22,6 +22,9 @@ import {PARK_SLOTS} from './S4Montage';
 
 const COLLAPSE_FRAMES = 26;
 const EYEBROW_FRAME = 34;
+/** Where he ends up once the icons have collapsed — S6 springs on from here. */
+export const PROOF_AMEEN_OFFSET_Y = -300;
+
 const STATS_IN = 40;
 /** Relative to STATS_IN — the three numbers stagger up. */
 const STAT_DELAYS = [0, 12, 24];
@@ -127,7 +130,7 @@ export const S5Proof: React.FC = () => {
 				style={{
 					alignItems: 'center',
 					justifyContent: 'center',
-					transform: `translateY(${-300 * rise * layout.vScale}px)`,
+					transform: `translateY(${PROOF_AMEEN_OFFSET_Y * rise * layout.vScale}px)`,
 				}}
 			>
 				<div style={{transform: `scale(${absorb})`}}>
