@@ -10,6 +10,13 @@ import {
 } from 'remotion';
 import {z} from 'zod';
 import {TwentyTwoKHzAudio} from './22KhzAudio';
+import {
+	AMEEN_AD_DURATION_IN_FRAMES,
+	AMEEN_AD_FPS,
+	AmeenAd,
+	ameenAdDefaultProps,
+	ameenAdSchema,
+} from './AmeenAd';
 import {UseanimatedEmojis} from './AnimatedEmojis';
 import BetaText, {betaTextSchema} from './BetaText';
 import {NativeBufferStateForImage} from './BufferState/Image';
@@ -377,6 +384,48 @@ export const Index: React.FC = () => {
 
 	return (
 		<>
+			<Folder name="ameen-ad">
+				<Composition
+					id="ameen-ad-vertical"
+					component={AmeenAd}
+					width={1080}
+					height={1920}
+					fps={AMEEN_AD_FPS}
+					durationInFrames={AMEEN_AD_DURATION_IN_FRAMES}
+					schema={ameenAdSchema}
+					defaultProps={ameenAdDefaultProps}
+				/>
+				<Composition
+					id="ameen-ad-square"
+					component={AmeenAd}
+					width={1080}
+					height={1080}
+					fps={AMEEN_AD_FPS}
+					durationInFrames={AMEEN_AD_DURATION_IN_FRAMES}
+					schema={ameenAdSchema}
+					defaultProps={ameenAdDefaultProps}
+				/>
+				<Composition
+					id="ameen-ad-hook-money"
+					component={AmeenAd}
+					width={1080}
+					height={1920}
+					fps={AMEEN_AD_FPS}
+					durationInFrames={AMEEN_AD_DURATION_IN_FRAMES}
+					schema={ameenAdSchema}
+					defaultProps={{...ameenAdDefaultProps, hookVariant: 'money'}}
+				/>
+				<Composition
+					id="ameen-ad-hook-chaos"
+					component={AmeenAd}
+					width={1080}
+					height={1920}
+					fps={AMEEN_AD_FPS}
+					durationInFrames={AMEEN_AD_DURATION_IN_FRAMES}
+					schema={ameenAdSchema}
+					defaultProps={{...ameenAdDefaultProps, hookVariant: 'chaos'}}
+				/>
+			</Folder>
 			<Folder name="copilot-tests">
 				<Composition
 					id="keyframed-props-test"
